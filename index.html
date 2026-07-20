@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Vision Mobile - Mixed Reality</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+  <div id="app"></div>
+  
+  <!-- Pass-through Camera -->
+  <video id="camera-feed" autoplay playsinline muted style="display: none;"></video>
+  <canvas id="camera-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></canvas>
+  
+  <!-- 3D Rendering Canvas -->
+  <canvas id="render-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;"></canvas>
+  
+  <!-- UI Layer -->
+  <div id="ui-layer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none;">
+    <div id="stats" style="position: absolute; top: 10px; left: 10px; color: #0ea5e9; font-family: monospace; font-size: 12px; background: rgba(15, 23, 42, 0.8); padding: 10px; border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 4px;">
+      <div>FPS: <span id="fps">0</span></div>
+      <div>Camera: <span id="camera-status">Desconectada</span></div>
+      <div>XR: <span id="xr-status">Detectando...</span></div>
+      <div>World Lock: <span id="world-lock-status">Pronto</span></div>
+    </div>
+    
+    <div id="debug-panel" style="position: absolute; bottom: 10px; left: 10px; color: #0ea5e9; font-family: monospace; font-size: 11px; background: rgba(15, 23, 42, 0.8); padding: 10px; border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 4px; max-width: 300px; max-height: 200px; overflow-y: auto;">
+      <div style="margin-bottom: 8px; font-weight: bold;">Debug</div>
+      <div id="debug-output"></div>
+    </div>
+    
+    <div id="menu" style="position: absolute; bottom: 20px; right: 20px; pointer-events: all;">
+      <button id="btn-toggle-camera" style="padding: 10px 15px; margin: 5px; background: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">📷 Câmera</button>
+      <button id="btn-xr-start" style="padding: 10px 15px; margin: 5px; background: #0ea5e9; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">🥽 XR</button>
+      <button id="btn-demo" style="padding: 10px 15px; margin: 5px; background: #10b981; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">🎯 Demo</button>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
